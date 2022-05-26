@@ -17,6 +17,22 @@ const PostSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    body: {
+        type: String,
+        required: true,
+    },
+    viewsCount: {
+        type: Number,
+        default: 0,
+    },
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: "Comment",
+    }],
+    createdBy: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+    },
     categories:{
         type:Array,
         required:false

@@ -1,9 +1,5 @@
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken");
-
-// const salt = await bcrypt.genSalt(10);
-// const hashedPassword = await bcrypt.hash(req.body.password,salt)
-
 //hashed passowrd
 async function securePassword (password) {
     const salt = await bcrypt.genSalt(10);
@@ -18,4 +14,14 @@ async function  generateJwt(data) {
     });
     return token;
   };
+
+//   const validateEmail = async (email) => {
+//     let user = await User.findOne({ email });
+//     if(user) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// };
+ 
 module.exports = {securePassword,generateJwt};

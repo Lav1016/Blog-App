@@ -1,10 +1,12 @@
 const mongoose = require("mongoose");
 const userModal = require("../models/User");
 const bcrypt = require("bcrypt");
-
 const { securePassword,generateJwt } = require("../Utils/securePassword");
-const jwt = require("jsonwebtoken");
-
+const {message}= require("../Heplers/ErrorMessage")
+const {generalSuccessMessages}= require("../Heplers/SuccessMessage")
+const {statusCode}= require("../Heplers/StatusCode")
+const {SuccessResponse, successResponse}= require("../Heplers/SuccessResponse")
+const {errorResponse}= require("../Heplers/ErrorResponse")
 
 //register
 exports.register = async (req, res) => {
@@ -20,14 +22,9 @@ exports.register = async (req, res) => {
       password: hashedPassword,
     });
     const user = await newUser.save();
-    // res.status(200).json(user);
-    // res.json({
-    //     status:200,
-    //     data:user
-    // })
-    console.log(user);
+    successResponse(res,statusCode.msg_save_code,generalSuccessMessages.UserCreatedSuccessfully,user)
   } catch (error) {
-    console.log(error);
+    errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,error)
   }
 };
 
@@ -37,11 +34,11 @@ exports.login = async (req,res)=>{
         const {email} = req.body
         const user = await userModal.findOne({email:email})
         if(!user){
-            res.status(400).json("wrong credentials")
+          errorResponse(res,statusCode.no_record_found,message.notfound_text)
         }
         const validate = await bcrypt.compare(req.body.password,user.password)
         if(!validate) {
-            res.status(400).json("wronge credentails ")
+          errorResponse(res,statusCode.exception_msg_code,message.password_msg)
         }
         const userData = {
             emailId :req.body.email,
@@ -49,12 +46,18 @@ exports.login = async (req,res)=>{
         };
         const Token = await generateJwt(userData)
         const {password,...others} = user._doc
-        res.json({
-            status:200,
-            data:others,Token
-        })
+        successResponse(res,statusCode.msg_save_code,generalSuccessMessages.loginSuccessfully,{Token,user})
     }catch(err){
         console.log(err)
 
     }
+}
+
+//update
+exports.update = async(req,res)=>{
+  try{
+
+  }catch(error){
+    res.send("error",error)
+  }
 }
