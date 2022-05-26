@@ -5,7 +5,7 @@ const { securePassword,generateJwt } = require("../Utils/securePassword");
 const {message}= require("../Heplers/ErrorMessage")
 const {generalSuccessMessages}= require("../Heplers/SuccessMessage")
 const {statusCode}= require("../Heplers/StatusCode")
-const {SuccessResponse, successResponse}= require("../Heplers/SuccessResponse")
+const {successResponse}= require("../Heplers/SuccessResponse")
 const {errorResponse}= require("../Heplers/ErrorResponse")
 
 //register
@@ -27,7 +27,6 @@ exports.register = async (req, res) => {
     errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,error)
   }
 };
-
 //login
 exports.login = async (req,res)=>{
     try{
@@ -41,18 +40,17 @@ exports.login = async (req,res)=>{
           errorResponse(res,statusCode.exception_msg_code,message.password_msg)
         }
         const userData = {
-            emailId :req.body.email,
-            userId :user._id
+            email :req.body.email,
+            name: user.username,
+            user_Id :user._id
         };
         const Token = await generateJwt(userData)
         const {password,...others} = user._doc
         successResponse(res,statusCode.msg_save_code,generalSuccessMessages.loginSuccessfully,{Token,user})
     }catch(err){
-        console.log(err)
-
+      errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text)
     }
 }
-
 //update
 exports.update = async(req,res)=>{
   try{

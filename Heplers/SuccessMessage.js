@@ -22,6 +22,9 @@ module.exports.generalSuccessMessages = {
   recordGet : "all Records Fetch successfully!",
   OTP_msg : "One time password send successfully!",
   msg_reject_text : 'Record reject successfully!',
+  msg_delete_text: "Record deleted successfully!",
+  GET_ITEM ="one get record successfully"
+
 
 
 };

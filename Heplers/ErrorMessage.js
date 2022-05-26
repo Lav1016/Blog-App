@@ -1,7 +1,6 @@
 module.exports.message = {
   exception_msg_text: "Something went wrong!",
   notfound_text: "Records does not exist!",
-  msg_delete_text: "Record deleted successfully!",
   password_not_exist: "Password does not match!",
   session_expire: "Your session has been expired!",
   email_not_exist: "Email does not exist!",
@@ -20,4 +19,5 @@ module.exports.message = {
   forbiddenHTTP: "forbiddenHTTP",
   tokenMessage: "TOKEN IS REQUIED!",
   RoleNotFound: "Role Not Found",
+  ITEM_NOT_FOUND:"Item not found"
 };
