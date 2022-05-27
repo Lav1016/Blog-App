@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const CategorySchema = require("../models/Category")
+const paginate = require('express-paginate');
+
 const {message}= require("../Heplers/ErrorMessage")
 const {generalSuccessMessages}= require("../Heplers/SuccessMessage")
 const {statusCode}= require("../Heplers/StatusCode")
@@ -21,8 +23,8 @@ exports.addOne = async(req,res)=>{
 //deleteOnedata
 exports.removeOneData = async(req,res)=>{
     try{
-        const deleted = await CategorySchema.findByIdAndDelete(req.params.id)
-        if(!deleted){
+        const deleted = await CategorySchema.findByIdAndDelete(req.query.id)
+        if(!deleted == null){
             errorResponse(res,statusCode.exception_msg_code,message.notfound_text)
         }
         successResponse(res,statusCode.msg_save_code,generalSuccessMessages.msg_delete_text)
@@ -30,20 +32,25 @@ exports.removeOneData = async(req,res)=>{
         errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
     }
 }
+
+// update one
 exports.updateOne = async(req,res)=>{
     try{
-        
+     const updateCategory = await CategorySchema.findByIdAndUpdate(req.params.id, req.body);
+     successResponse(res,statusCode.msg_save_code,generalSuccessMessages.msg_update_text,updateCategory)
     }catch(err){
         errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
     }
 }
+
+//get one 
 exports.getone = async(req,res)=>{
     try {
-        const item = await CategorySchema.findById(req.params.id);
+        const item = await CategorySchema.findOne(req.params.id);
         if(!item) {
             errorResponse(res,statusCode.exception_msg_code,message.ITEM_NOT_FOUND)
         }
-        successResponse(res,statusCode.msg_save_code,generalSuccessMessages.GET_ITEM)
+        successResponse(res,statusCode.msg_save_code,generalSuccessMessages.fetch_One_Record,item)
     } catch(err) {
         return res.status(500).json({
             message: err.message,
@@ -51,3 +58,12 @@ exports.getone = async(req,res)=>{
         });
     }
 }
+// get all
+// exports.getAll = async(req,res)=>{
+//     try{
+//         const 
+
+//     }catch(err){
+
+//     }
+// }

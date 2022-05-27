@@ -8,5 +8,4 @@ module.exports.statusCode = {
     authentication_code : '401',
     duplicate_code : '409',
     server_error : '500',
-
 }

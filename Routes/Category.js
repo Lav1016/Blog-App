@@ -7,12 +7,12 @@ router.post("/Addone",categoryController.addOne)
 //RemoveOne
 router.delete("/removeOne",categoryController.removeOneData)
 //updateOne 
-router.put("/update",categoryController.updateOne)
-
+router.put("/update/:id",categoryController.updateOne)
 //getOne
-router.get('/http://localhost:3000/CategoryRoute/Addone',categoryController.getone)
+router.get('/getOne',categoryController.getone)
 
-
+///
+// router.get('/getAll',categoryController.getAll)
 
 
 
