@@ -6,6 +6,7 @@ const Db = require('./config/database')
 const userRoute = require("./Routes/User")
 const PostRoute = require("./Routes/Post")
 const CategoryRoute = require("./Routes/Category")
+const cors = require("cors");
 
 const server = http.createServer(app);
 require("dotenv").config()
@@ -13,11 +14,17 @@ require("dotenv").config()
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json({ limit: "50mb" }));
 
+
 app.use('/userRoute',userRoute)
 app.use('/PostRoute',PostRoute)
 app.use('/CategoryRoute',CategoryRoute)
 
-
+app.use(
+  cors({
+    origin: "*",
+    credentials: "true",
+  })
+);
 
 
 const { API_PORT } = process.env;
