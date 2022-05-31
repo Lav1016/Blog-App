@@ -7,10 +7,15 @@ const {generalSuccessMessages}= require("../Heplers/SuccessMessage")
 const {statusCode}= require("../Heplers/StatusCode")
 const {successResponse}= require("../Heplers/SuccessResponse")
 const {errorResponse}= require("../Heplers/ErrorResponse")
+const CryptoJS = require("crypto-js");
 
 //register
 exports.register = async (req, res) => {
   try {
+    // var ciphertext = CryptoJS.AES.encrypt('my message', 'secret key 123').toString();  // enypt password 
+//     var bytes  = CryptoJS.AES.decrypt(ciphertext, 'secret key 123');
+// var originalText = bytes.toString(CryptoJS.enc.Utf8);
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(req.body.password, salt);
     // const hash = await securePassword(req.body.password)

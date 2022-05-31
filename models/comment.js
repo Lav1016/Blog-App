@@ -7,11 +7,11 @@ const CommentSchema = new Schema (
             required: true,
         }, 
         post: {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Types.ObjectId,
             ref: "post",
         },       
         createdBy: {
-            type: Schema.Types.ObjectId,
+            type: mongoose.Types.ObjectId,
             ref: "User",
         },
          

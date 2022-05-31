@@ -26,11 +26,11 @@ const PostSchema = new mongoose.Schema({
         default: 0,
     },
     comments: [{
-        type: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "Comment",
     }],
     createdBy: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Types.ObjectId,
         ref: "User",
     },
     categories:{
@@ -39,4 +39,4 @@ const PostSchema = new mongoose.Schema({
     }
 },{timestamps:true}
 )
-module.exports = mongoose.Schema("Post",PostSchema)
+module.exports = mongoose.model("Post",PostSchema)

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const CategorySchema = require("../models/Category")
-const paginate = require('express-paginate');
 
 const {message}= require("../Heplers/ErrorMessage")
 const {generalSuccessMessages}= require("../Heplers/SuccessMessage")
