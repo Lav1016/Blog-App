@@ -57,6 +57,7 @@ exports.getone = async(req,res)=>{
         });
     }
 }
+
 // get all
 // exports.getAll = async(req,res)=>{
 //     try{

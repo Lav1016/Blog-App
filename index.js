@@ -6,6 +6,7 @@ const Db = require('./config/database')
 const userRoute = require("./Routes/User")
 const PostRoute = require("./Routes/Post")
 const CategoryRoute = require("./Routes/Category")
+const commentRoute =require('./Routes/Comment')
 // const crypto = require('crypto');
 const cors = require("cors");
 const server = http.createServer(app);
@@ -18,6 +19,8 @@ app.use(bodyParser.json({ limit: "50mb" }));
 app.use('/userRoute',userRoute)
 app.use('/PostRoute',PostRoute)
 app.use('/CategoryRoute',CategoryRoute)
+app.use('/commentRoute',commentRoute)
+
 app.use(
   cors({
     origin: "*",

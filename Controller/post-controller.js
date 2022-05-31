@@ -51,10 +51,31 @@ exports.UpdateStory = async(req,res)=>{
 exports.getOneStory = async(req,res)=>{
     try{
         const item = await PostModal.findByIdAndUpdate(req.params.id,{
-            
-        })
+            $inc:{viewsCount:1}
+
+        }).populate("category","title")
+        if(item){
+            item.comments  = await comment.find({story:item._id})
+            return res.status(200).json(item);
+        }
+        return res.status(404).json({
+            message: "Item not found",
+            success: false,
+        });
 
     }catch(err){
+        errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
+
+    }
+}
+
+//getTopStories 
+exports.TopStory = async(req,res)=>{
+    try{
+
+
+    }catch(err){
+        errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
 
     }
 }

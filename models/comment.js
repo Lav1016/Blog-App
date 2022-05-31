@@ -1,5 +1,6 @@
-const { Schema, model } = require("mongoose");
- 
+const mongoose = require("mongoose");
+const Schema =mongoose.Schema;
+
 const CommentSchema = new Schema (
     {   
         body: {
@@ -19,4 +20,4 @@ const CommentSchema = new Schema (
     { timestamps: true }
 );
  
-module.exports = model("Comment", CommentSchema);
+module.exports = mongoose.model("Comment",CommentSchema)

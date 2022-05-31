@@ -14,6 +14,9 @@ router.put('/updateStory/:id',postConrtoller.UpdateStory)
 //getOneStory
 router.get('/getStroy',postConrtoller.getOneStory)
 
+//getTopStories 
+router.get('/getTopStory',postConrtoller.TopStory)
+
 
 
 
