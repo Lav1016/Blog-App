@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const CategorySchema = require("../models/Category")
-
 const {message}= require("../Heplers/ErrorMessage")
 const {generalSuccessMessages}= require("../Heplers/SuccessMessage")
 const {statusCode}= require("../Heplers/StatusCode")
@@ -59,11 +58,10 @@ exports.getone = async(req,res)=>{
 }
 
 // get all
-// exports.getAll = async(req,res)=>{
-//     try{
-//         const 
+exports.getAll = async(req,res)=>{
+    try{
 
-//     }catch(err){
+    }catch(err){
 
-//     }
-// }
+    }
+}

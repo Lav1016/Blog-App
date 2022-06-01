@@ -12,7 +12,7 @@ router.put("/update/:id",categoryController.updateOne)
 router.get('/getOne',categoryController.getone)
 
 ///
-// router.get('/getAll',categoryController.getAll)
+router.get('/getAll',categoryController.getAll)
 
 
 

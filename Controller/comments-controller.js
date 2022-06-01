@@ -35,6 +35,5 @@ exports.commentsDelete =async(req,res)=>{
     }catch(err){
         errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
 
-
     }
 }

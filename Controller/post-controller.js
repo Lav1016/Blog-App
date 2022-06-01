@@ -72,10 +72,20 @@ exports.getOneStory = async(req,res)=>{
 //getTopStories 
 exports.TopStory = async(req,res)=>{
     try{
+        const topStory = await PostModal.find()
 
 
     }catch(err){
         errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
+
+    }
+}
+
+//fetchAll Story
+exports.fetchAll =async(req,res)=>{
+    try{
+
+    }catch(err){
 
     }
 }
