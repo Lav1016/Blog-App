@@ -35,6 +35,26 @@ exports.fetchOne = async(req,res)=>{
     }
 }
 
+//fetchAll
+exports.fetchAll = async(req,res)=>{
+    try{
+
+    }catch(err){
+        errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
+
+    }
+}
+
+//fetchALL vedio
+exports.fetchAllVedio = async(req,res)=>{
+    try{
+
+    }catch(err){
+        errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
+
+    }
+}
+
 //updateVedio
 exports.updateVedio = async(req,res)=>{
     try{

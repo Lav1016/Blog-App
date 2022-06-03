@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const PostModal = require("../models/Post")
+const comment = require("../models/comment")
 const {message}= require("../Heplers/ErrorMessage")
 const {generalSuccessMessages}= require("../Heplers/SuccessMessage")
 const {statusCode}= require("../Heplers/StatusCode")
@@ -20,6 +21,7 @@ exports.addOnePost = async(req,res)=>{
 
     }
 }
+
 
 // deleteOneStory
 exports.deleteStory = async(req,res)=>{
@@ -50,12 +52,13 @@ exports.UpdateStory = async(req,res)=>{
 //fatech one Story
 exports.getOneStory = async(req,res)=>{
     try{
-        const item = await PostModal.findByIdAndUpdate(req.params.id,{
+        const item = await PostModal.findByIdAndUpdate(req.query.id,{
             $inc:{viewsCount:1}
 
-        }).populate("category","title")
+        })
+        console.log(item)
         if(item){
-            item.comments  = await comment.find({story:item._id})
+            item.comments  = await comment.find({post:item._id})
             return res.status(200).json(item);
         }
         return res.status(404).json({
@@ -64,15 +67,18 @@ exports.getOneStory = async(req,res)=>{
         });
 
     }catch(err){
+
         errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
 
     }
 }
 
+
 //getTopStories 
 exports.TopStory = async(req,res)=>{
     try{
-        const topStory = await PostModal.find()
+        const topStory = await PostModal.find().sort({'createdAt': -1})
+
 
 
     }catch(err){
@@ -85,7 +91,23 @@ exports.TopStory = async(req,res)=>{
 exports.fetchAll =async(req,res)=>{
     try{
 
+      const story=  await PostModal.find().limit(5).sort( { 'createdAt': -1 });
+      res.status(200).json({
+          lenth : story.length,
+          data : story})
+          
+        // PostModal.aggregate([
+        //     { 
+        //        "$match": {
+        //                "$text": { "$search": "cake tea" }
+        //     }
+        //     },
+        //     { "$sort": { "score": { "$meta": "textScore" } } },
+        //     { "$limit": skip + limit },
+        //     { "$skip": skip }
+        // ])
     }catch(err){
-
+        console.log(err)
+        errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,err)
     }
 }
