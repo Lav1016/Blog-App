@@ -9,10 +9,10 @@ router.post('/addVedio',vedioController.addVedio)
 router.get('/fetchOne',vedioController.fetchOne)
 
 //fetchAll Vedio
-router.get('/fetchAll',vedioController.fetchAll)
+router.get('/fetchAll',vedioController.fetchAllVedio)
 
 //fetchTopVedio
-router.get('/fetchTopVedio',vedioController.fetchAllVedio)
+router.get('/fetchTopVedio',vedioController.fetchTopVedio)
 
 //updateVedio
 router.put('/update/:id',vedioController.updateVedio)

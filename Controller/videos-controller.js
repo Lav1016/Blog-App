@@ -35,8 +35,8 @@ exports.fetchOne = async(req,res)=>{
     }
 }
 
-//fetchAll
-exports.fetchAll = async(req,res)=>{
+//fetchAllvedio
+exports.fetchAllVedio = async(req,res)=>{
     try{
 
     }catch(err){
@@ -45,8 +45,8 @@ exports.fetchAll = async(req,res)=>{
     }
 }
 
-//fetchALL vedio
-exports.fetchAllVedio = async(req,res)=>{
+//fetchTopVedio
+exports.fetchTopVedio = async(req,res)=>{
     try{
 
     }catch(err){
