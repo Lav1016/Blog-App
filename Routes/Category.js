@@ -9,7 +9,7 @@ router.delete("/removeOne",categoryController.removeOneData)
 //updateOne 
 router.put("/update/:id",categoryController.updateOne)
 //getOne
-router.get('/getOne',categoryController.getone)
+router.get('/getOne/:id',categoryController.getone)
 
 ///
 router.get('/getAll',categoryController.getAll)

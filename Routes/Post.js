@@ -13,7 +13,7 @@ router.delete('/deleteStory',postConrtoller.deleteStory)
 router.put('/updateStory/:id',postConrtoller.UpdateStory)
 
 //getOneStory
-router.get('/getStroy',postConrtoller.getOneStory)
+router.get('/getStroy/:id',postConrtoller.getOneStory)
 
 //getTopStories 
 router.get('/getTopStory',postConrtoller.TopStory)

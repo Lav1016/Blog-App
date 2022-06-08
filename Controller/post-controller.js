@@ -83,7 +83,6 @@ exports.getOneStory = async (req, res) => {
       $inc: { viewsCount: 1 },
     })
     // .populate("category", "title");
-    console.log(item);
     if (item) {
       item.comments = await comment.find({ post: item._id });
       return res.status(200).json(item);

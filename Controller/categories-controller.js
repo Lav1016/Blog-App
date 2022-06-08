@@ -76,17 +76,21 @@ exports.updateOne = async (req, res) => {
 
 //get one
 exports.getone = async (req, res) => {
+  console.log(req.params)
   try {
-    const item = await CategorySchema.findOne(req.params.id);
-    if (!item) {
-      errorResponse(res, statusCode.exception_msg_code, message.ITEM_NOT_FOUND);
+    const item = await CategorySchema.findById(req.query.id);
+    if (item) {
+      return  successResponse(
+        res,
+        statusCode.msg_save_code,
+        generalSuccessMessages.fetch_One_Record,
+        item
+      );
     }
-    successResponse(
-      res,
-      statusCode.msg_save_code,
-      generalSuccessMessages.fetch_One_Record,
-      item
-    );
+    errorResponse(res, statusCode.exception_msg_code, message.ITEM_NOT_FOUND);
+     
+    
+    
   } catch (err) {
     return res.status(500).json({
       message: err.message,

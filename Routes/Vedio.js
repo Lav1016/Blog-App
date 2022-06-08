@@ -5,8 +5,8 @@ const vedioController = require('../Controller/videos-controller')
 //addVedio
 router.post('/addVedio',vedioController.addVedio)
 
-//getVedio
-router.get('/fetchOne',vedioController.fetchOne)
+//getoneVedio
+router.get('/fetchOne/:id',vedioController.fetchOne)
 
 //fetchAll Vedio
 router.get('/fetchAll',vedioController.fetchAllVedio)
