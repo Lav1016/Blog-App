@@ -76,7 +76,6 @@ exports.updateOne = async (req, res) => {
 
 //get one
 exports.getone = async (req, res) => {
-  console.log(req.params)
   try {
     const item = await CategorySchema.findById(req.query.id);
     if (item) {
@@ -88,9 +87,6 @@ exports.getone = async (req, res) => {
       );
     }
     errorResponse(res, statusCode.exception_msg_code, message.ITEM_NOT_FOUND);
-     
-    
-    
   } catch (err) {
     return res.status(500).json({
       message: err.message,

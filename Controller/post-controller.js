@@ -56,10 +56,10 @@ exports.deleteStory = async (req, res) => {
 //updateStory
 exports.UpdateStory = async (req, res) => {
   try {
-    const updateStroy = await PostModal.findByIdAndUpdate(
-      req.params.id,
-      req.body
-    );
+    const updateStroy = await PostModal.findByIdAndUpdate(req.params.id, {
+      $set: req.body
+      //reg.query.id we can pass the id in params
+    });
     successResponse(
       res,
       statusCode.msg_save_code,
