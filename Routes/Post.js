@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const postConrtoller = require("../Controller/post-controller");
-const { route } = require('./Comment');
-const { verifyToken }=require("../config/Auth")
+const { authorization }=require("../config/Auth")
 
 //addone stroy
 router.post('/addOnePost',postConrtoller.addOnePost)
@@ -11,7 +10,7 @@ router.post('/addOnePost',postConrtoller.addOnePost)
 router.delete('/deleteStory',postConrtoller.deleteStory)
 
 //updateStory
-router.put('/updateStory/:id',verifyToken,postConrtoller.UpdateStory)
+router.put('/updateStory/:id',authorization,postConrtoller.UpdateStory)
 
 //getOneStory
 router.get('/getStroy/:id',postConrtoller.getOneStory)

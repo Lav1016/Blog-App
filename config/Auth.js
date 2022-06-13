@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 
-const verifyToken = async (req, res, next) => {
+const authorization = async (req, res, next) => {
   const authHeader = req.headers.authorization || req.params.token || req.body.token || req.query.token ||req.headers.token
   if (authHeader) {
     const token = authHeader.split('Bearer ')[1];
@@ -14,8 +14,14 @@ const verifyToken = async (req, res, next) => {
         next();
     });
   } else {
-    return res.status(401).json("you are authenticated");
+    return res.status(401).json("you are unthenticated");
   }
 };
 
-module.exports = { verifyToken };
+
+
+
+
+
+
+module.exports = { authorization };

@@ -8,6 +8,8 @@ router.post('/addComments',CommentController.addComments)
 //removeOneComments
 router.delete('/deleteComments',CommentController.commentsDelete)
 
+router.get('/fetch',CommentController.fetchOneCommnets)
+
 
 
 module.exports = router;

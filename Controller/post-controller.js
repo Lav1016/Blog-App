@@ -12,7 +12,7 @@ exports.addOnePost = async (req, res) => {
   try {
     const postdata = await new PostModal({
       ...req.body,
-      createdBy: mongoose.Types.ObjectId(req.user_id),
+      // createdBy: mongoose.Types.ObjectId(req.user_id),
     });
     const SavePOst = await postdata.save();
     successResponse(
@@ -104,12 +104,14 @@ exports.getOneStory = async (req, res) => {
 //getTopStories
 exports.TopStory = async (req, res) => {
   try {
+    console.log("Params",req.params)
+    console.log("Query",req.query)
     const topStory = await PostModal.find()
-    //   .populate("category", "title")
-      .sort({ createdAt: 1 })
-      .limit(3)
-      .lean()
-      .exec();
+    .limit(req.query.limit)
+    .sort({createdAt: 1 })
+    .populate("createdBy")
+      // .lean()
+      // .exec();
     return res.status(201).json({
         lenth: topStory.length,
       data: topStory,
@@ -167,3 +169,5 @@ exports.fetchAll = async (req, res) => {
     );
   }
 };
+
+
