@@ -11,7 +11,7 @@ exports.addOne = async (req, res) => {
   try {
     const newrecord = await CategorySchema({
       ...req.body,
-      createdBy: mongoose.Types.ObjectId(req.user_id),
+      // createdBy: mongoose.Types.ObjectId(req.user_id),
     });
     const recordSave = await newrecord.save();
     successResponse(

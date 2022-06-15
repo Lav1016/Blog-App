@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const vedioController = require('../Controller/videos-controller')
+const { authorization }=require("../config/Auth")
 
 //addVedio
 router.post('/addVedio',vedioController.addVedio)

@@ -16,6 +16,13 @@ require("dotenv").config()
 
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(bodyParser.json({ limit: "50mb" }));
+app.use(
+  cors({
+    origin: "*",
+    // credentials: "true",
+  })
+);
+
 
 app.use('/userRoute',userRoute)
 app.use('/PostRoute',PostRoute)
@@ -23,12 +30,6 @@ app.use('/CategoryRoute',CategoryRoute)
 app.use('/commentRoute',commentRoute)
 app.use('/vedioRoute',vedioRoute)
 
-app.use(
-  cors({
-    origin: "*",
-    // credentials: "true",
-  })
-);
 
 
 
