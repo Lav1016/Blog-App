@@ -32,6 +32,8 @@ exports.register = async (req, res) => {
     errorResponse(res,statusCode.exception_msg_code,message.exception_msg_text,error)
   }
 };
+
+
 //login
 exports.login = async (req,res)=>{
     try{
